@@ -1,8 +1,10 @@
 # Transformación de la estructura de clases sociales en Honduras durante el modelo de acumulación neoliberal (2006, 2010 y 2013).
 
-*Este proyecto contiene la programación utilizada para el procesamiento de las bases de datos de la Encuesta Permanente de Hogares de Propósitos Múltiples (EPHPM) de Honduras de los años 2013, 2010 y 2006.
-El objetivo de este proyecto fue 
-Se incluyen recodificaciones, creación de variables y construcción de escalas para análisis laboral y de ciudadanía social*
+La construcción de la estructura de clases sociales en el estudio se basa en dos ejes principales: las condiciones de explotación y el acaparamiento de oportunidades de acumulación. A través del primer eje, se identifican cuatro grupos principales: capitalistas, pequeña burguesía, trabajadores asalariados y el excedente laboral. El segundo eje, que se centra en la acumulación de oportunidades, destaca el papel de las credenciales educativas como un recurso clave en la adscripción a las clases sociales.
+
+Las variables utilizadas para definir la adscripción a una clase social incluyen la categoría ocupacional (propiedad de medios de producción y sector público/privado), la jornada laboral (nivel de protección social y laboral), la ubicación y tamaño del establecimiento (capacidad de acumulación y contratación), el nivel educativo, los ingresos y la estabilidad en el empleo. Estas variables permiten construir una estructura de clases centrada en la estructura del empleo y delimitada por las fuentes de información utilizadas, como las encuestas de hogares.
+
+Además, el análisis de la estructura de clases se enmarca dentro de una perspectiva teórica que combina el neo-marxismo y el neo-weberianismo. Mientras que el neo-marxismo enfatiza las condiciones de explotación en la producción, el neo-weberianismo se enfoca en la exclusión social derivada de la distribución de oportunidades. Esta combinación permite una visión relacional que explica tanto la reproducción de desigualdades como los procesos de movilidad y reordenamiento social dentro del modelo de acumulación vigente.
 
 # Descripción general 
 Este script en SPSS Syntax procesa bases de datos de encuestas para la construcción de variables relacionadas con empleo, precariedad laboral, credenciales educativas y ciudadanía social.
