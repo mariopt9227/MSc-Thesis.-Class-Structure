@@ -50,10 +50,9 @@ Este repositorio contiene los scripts de procesamiento y análisis de las Encues
 
 ## Uso
 
-Este código permite realizar la recodificación de variables y la creación de escalas para analizar la precariedad laboral y la ciudadanía social en Honduras. Está diseñado para ser utilizado por investigadores, académicos y profesionales en ciencias sociales y economía laboral.
+Este código permite realizar la recodificación de variables y la creación de escalas para analizar la precariedad laboral y la ciudadanía social en Honduras.
 
 ## Variables Principales
-
 ### **Precariedad Laboral**
 - **Sector_REC**: Distingue entre sector público y privado.
 - **Tipo_insercion**: Clasificación del tipo de inserción laboral.
@@ -77,6 +76,68 @@ Este código permite realizar la recodificación de variables y la creación de 
 - **IngresoAutoempleo**: Clasifica los niveles de ingresos de autoempleados.
 - **Ubicación**: Identifica si el negocio está dentro o fuera del hogar.
 - **Capacidad_contratacion**: Evalúa la capacidad de contratación de personal.
+# Análisis de las Encuestas de Hogares de Propósitos Múltiples (EPHPM) de Honduras  
+
+ 
+## Construcción de la Estructura de Clases Sociales  
+Para definir las clases sociales, se integraron las subescalas de precariedad laboral, credenciales educativas, tipología de autoempleo y fuente de ingresos. Se establecieron las siguientes categorías:  
+
+1. **Clase Alta:**  
+   - Ingresos elevados  
+   - Alta estabilidad laboral  
+   - Acceso a seguridad social  
+   - Altas credenciales educativas  
+
+2. **Clase Media:**  
+   - Ingresos medios  
+   - Estabilidad laboral intermedia  
+   - Acceso parcial a seguridad social  
+   - Credenciales educativas medias o altas  
+
+3. **Clase Trabajadora:**  
+   - Ingresos bajos a medios  
+   - Alta precariedad laboral  
+   - Acceso limitado a seguridad social  
+   - Credenciales educativas medias o bajas  
+
+4. **Clase Baja o Vulnerable:**  
+   - Ingresos bajos  
+   - Condiciones de empleo informales  
+   - Sin acceso a seguridad social  
+   - Bajas credenciales educativas  
+
+### Cálculo  
+Se realizó una combinación de los índices de precariedad laboral, credenciales educativas y tipología de autoempleo para generar un puntaje compuesto que permite clasificar a los trabajadores en estas categorías.  
+
+## Zonas de Exclusión/Inclusión  
+El código define zonas de exclusión/inclusión con base en la escala productiva y las credenciales educativas.  
+
+### Lógica de Categorización  
+La variable `ZONA_EXCLUSION2` se inicializa en `88` y se reclasifica en función de los valores de `Escala_productiva` y `Escala_credenciales_educ`.  
+
+### Código en SPSS  
+COMPUTE ZONA_EXCLUSION2=88.
+EXECUTE.
+
+DO IF ((Escala_productiva <  3.67) & (Escala_credenciales_educ  <= 3)).
+RECODE ZONA_EXCLUSION2 (88=3).
+END IF.
+EXECUTE.
+
+DO IF ((Escala_productiva > 3.67) & (Escala_credenciales_educ <= 3)).
+RECODE ZONA_EXCLUSION2 (88=2).
+END IF.
+EXECUTE.
+
+DO IF ((Escala_productiva < 3.67) & (Escala_credenciales_educ >= 3)).
+RECODE ZONA_EXCLUSION2 (88=1).
+END IF.
+EXECUTE.
+
+DO IF ((Escala_productiva > 3.67) & (Escala_credenciales_educ >= 3)).
+RECODE ZONA_EXCLUSION2 (88=0).
+END IF.
+EXECUTE.
 
 ## Metodología
 
@@ -85,7 +146,6 @@ El análisis se basa en la creación de variables derivadas mediante recodificac
 ## Ejemplos de Uso
 
 ### **Cálculo de Precariedad Laboral**
-```spss
 COMPUTE SUB_ESCALA_PRECARIEDAD=(Jornada_labo + Estabilidad + IHSS + Salario_minimo_final)*2.5.
 EXECUTE.
 
